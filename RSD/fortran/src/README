@@ -1,0 +1,15 @@
+# Source code for the redshift-space distortion of 
+# galaxy - lyman alpha absorption correlation function.
+
+main.f90
+	main routine
+quadpack.f90
+	gaussian quadrature
+param.f90
+	parameter variables 
+absorber.f90
+	collection of functions defining the properties 
+	of absorber-galaxy pairs
+
+corrfunc.f90
+	velocity-space correlation function of galaxy-lya absorption
