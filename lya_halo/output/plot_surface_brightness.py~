@@ -1,0 +1,2 @@
+
+r,emissivity=genfromtxt('lya_halo_16.dat',comments='#',usecols=(1,2),unpack=True)
