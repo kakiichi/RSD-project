@@ -1,0 +1,99 @@
+[0;31mType:       [0minstancemethod
+[0;31mString Form:[0m<bound method Figure.add_axes of <matplotlib.figure.Figure object at 0x7f6ac916ecd0>>
+[0;31mFile:       [0m/usr/lib/pymodules/python2.7/matplotlib/figure.py
+[0;31mDefinition: [0m[0mfig[0m[0;34m.[0m[0madd_axes[0m[0;34m([0m[0mself[0m[0;34m,[0m [0;34m*[0m[0margs[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0m
+[0;31mDocstring:[0m
+Add an axes at position *rect* [*left*, *bottom*, *width*,
+*height*] where all quantities are in fractions of figure
+width and height.  kwargs are legal
+:class:`~matplotlib.axes.Axes` kwargs plus *projection* which
+sets the projection type of the axes.  (For backward
+compatibility, ``polar=True`` may also be provided, which is
+equivalent to ``projection='polar'``).  Valid values for
+*projection* are: ['aitoff', 'hammer', 'lambert', 'mollweide', 'polar', 'rectilinear'].  Some of these
+projections support  additional kwargs, which may be provided
+to :meth:`add_axes`. Typical usage::
+
+    rect = l,b,w,h
+    fig.add_axes(rect)
+    fig.add_axes(rect, frameon=False, axisbg='g')
+    fig.add_axes(rect, polar=True)
+    fig.add_axes(rect, projection='polar')
+    fig.add_axes(ax)
+
+If the figure already has an axes with the same parameters,
+then it will simply make that axes current and return it.  If
+you do not want this behavior, e.g., you want to force the
+creation of a new Axes, you must use a unique set of args and
+kwargs.  The axes :attr:`~matplotlib.axes.Axes.label`
+attribute has been exposed for this purpose.  e.g., if you want
+two axes that are otherwise identical to be added to the
+figure, make sure you give them unique labels::
+
+    fig.add_axes(rect, label='axes1')
+    fig.add_axes(rect, label='axes2')
+
+In rare circumstances, add_axes may be called with a single
+argument, an Axes instance already created in the present
+figure but not in the figure's list of axes.  For example,
+if an axes has been removed with :meth:`delaxes`, it can
+be restored with::
+
+    fig.add_axes(ax)
+
+In all cases, the :class:`~matplotlib.axes.Axes` instance
+will be returned.
+
+In addition to *projection*, the following kwargs are supported:
+
+  adjustable: [ 'box' | 'datalim' | 'box-forced']         
+  agg_filter: unknown
+  alpha: float (0.0 transparent through 1.0 opaque)         
+  anchor: unknown
+  animated: [True | False]         
+  aspect: unknown
+  autoscale_on: unknown
+  autoscalex_on: unknown
+  autoscaley_on: unknown
+  axes: an :class:`~matplotlib.axes.Axes` instance         
+  axes_locator: unknown
+  axis_bgcolor: any matplotlib color - see         :func:`~matplotlib.pyplot.colors`         
+  axisbelow: [ *True* | *False* ]         
+  clip_box: a :class:`matplotlib.transforms.Bbox` instance         
+  clip_on: [True | False]         
+  clip_path: [ (:class:`~matplotlib.path.Path`,         :class:`~matplotlib.transforms.Transform`) |         :class:`~matplotlib.patches.Patch` | None ]         
+  color_cycle: unknown
+  contains: a callable function         
+  figure: unknown
+  frame_on: [ *True* | *False* ]         
+  gid: an id string         
+  label: string or anything printable with '%s' conversion.         
+  lod: [True | False]         
+  navigate: [ *True* | *False* ]         
+  navigate_mode: unknown
+  path_effects: unknown
+  picker: [None|float|boolean|callable]         
+  position: unknown
+  rasterization_zorder: unknown
+  rasterized: [True | False | None]         
+  sketch_params: unknown
+  snap: unknown
+  title: unknown
+  transform: :class:`~matplotlib.transforms.Transform` instance         
+  url: a url string         
+  visible: [True | False]         
+  xbound: unknown
+  xlabel: unknown
+  xlim: length 2 sequence of floats         
+  xmargin: unknown
+  xscale: ['linear' | 'log' | 'symlog']
+  xticklabels: sequence of strings
+  xticks: sequence of floats         
+  ybound: unknown
+  ylabel: unknown
+  ylim: length 2 sequence of floats         
+  ymargin: unknown
+  yscale: ['linear' | 'log' | 'symlog']
+  yticklabels: sequence of strings
+  yticks: sequence of floats
+  zorder: any number         

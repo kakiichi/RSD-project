@@ -35,12 +35,16 @@ F4[N:2*N,N:2*N]=F[:,:]
 F4[0:N,N:2*N]=F[::-1,:]
 F4[N:2*N,0:N]=F[:,::-1]
 F4[0:N,0:N]=F[::-1,::-1]
+
 figure()
 extent=[-s_perp.max(),s_perp.max(),-s_para.max(),s_para.max()]
-imshow(F4,cmap='RdYlBu',extent=extent)
+optdpt_eff=-log10(F4)
+imshow(log10(optdpt_eff),cmap='RdYlBu_r',extent=extent)
+colorbar()
+contour(F4,extent=extent,colors='black',alpha=0.5,levels=[-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1.0])
 #imshow(F4,cmap='Spectral',extent=extent)
 colorbar()
-contour(F4,extent=extent,colors='black',alpha=0.5,levels=[0.1,0.2,0.3,0.4,0.5,0.6,0.65,0.675])
+#contour(F4,extent=extent,colors='black',alpha=0.5,levels=[0.1,0.2,0.3,0.4,0.5,0.6,0.65,0.675])
 
 figure()
 extent=[-s_perp.max(),s_perp.max(),-s_para.max(),s_para.max()]
