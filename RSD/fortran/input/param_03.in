@@ -1,5 +1,5 @@
-1.0, 1.74            # r0, slope_xi
-143., 3.0, 1.6      # v_inflow, r_inflow, slope_v12
+0.5, 1.85             # r0, slope_xi
+269., 1.0, 1.85       # v_inflow, r_inflow, slope_v12
 0., 1.0               # v_outflow, r_outflow
 200.                  # s12_0
-0.32, 2.              # r_eq,betaN_eff
+0.066, 1.5            # r_eq,betaN_eff
