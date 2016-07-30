@@ -1,0 +1,47 @@
+from pylab import *
+from scipy.interpolate import interp2d
+
+# read from files
+nfiles=1
+s_perp=range(nfiles)
+s_para=range(nfiles)
+xi_s=range(nfiles)
+
+#s_para,s_perp,tau_eff=genfromtxt('RSD_00.dat',usecols=(4,5,6),unpack=True,comments='#')
+#s_para,s_perp,tau_eff=genfromtxt('RSD_02.dat',usecols=(4,5,6),unpack=True,comments='#')
+#s_para,s_perp,tau_eff=genfromtxt('RSD_03.dat',usecols=(4,5,6),unpack=True,comments='#')
+#s_para,s_perp,tau_eff=genfromtxt('RSD_04.dat',usecols=(4,5,6),unpack=True,comments='#')
+#s_para,s_perp,tau_eff=genfromtxt('RSD_05.dat',usecols=(4,5,6),unpack=True,comments='#')
+#s_para,s_perp,tau_eff=genfromtxt('RSD_06.dat',usecols=(4,5,6),unpack=True,comments='#')
+#s_para,s_perp,tau_eff=genfromtxt('RSD_07.dat',usecols=(4,5,6),unpack=True,comments='#')
+#s_para,s_perp,tau_eff=genfromtxt('RSD_08.dat',usecols=(4,5,6),unpack=True,comments='#')
+#s_para,s_perp,tau_eff=genfromtxt('RSD_09.dat',usecols=(4,5,6),unpack=True,comments='#')
+#s_para,s_perp,tau_eff=genfromtxt('RSD_10.dat',usecols=(4,5,6),unpack=True,comments='#')
+#s_para,s_perp,tau_eff=genfromtxt('RSD_11.dat',usecols=(4,5,6),unpack=True,comments='#')
+#s_para,s_perp,tau_eff=genfromtxt('RSD_12.dat',usecols=(4,5,6),unpack=True,comments='#')
+#s_para,s_perp,tau_eff=genfromtxt('RSD_13.dat',usecols=(4,5,6),unpack=True,comments='#')
+#s_para,s_perp,tau_eff=genfromtxt('RSD_14.dat',usecols=(4,5,6),unpack=True,comments='#')
+#s_para,s_perp,tau_eff=genfromtxt('RSD_15.dat',usecols=(4,5,6),unpack=True,comments='#')
+s_para,s_perp,tau_eff=genfromtxt('RSD_16.dat',usecols=(4,5,6),unpack=True,comments='#')
+N=100
+
+F=exp(-tau_eff).reshape(N,N) # F[s_para,s_perp]
+#F=1.-F
+s_perp=s_perp.reshape(N,N)
+s_para=s_para.reshape(N,N)
+
+F4=zeros([2*N,2*N])
+F4[N:2*N,N:2*N]=F[:,:]
+F4[0:N,N:2*N]=F[::-1,:]
+F4[N:2*N,0:N]=F[:,::-1]
+F4[0:N,0:N]=F[::-1,::-1]
+
+figure()
+extent=[-s_perp.max(),s_perp.max(),-s_para.max(),s_para.max()]
+optdpt_eff=-log10(F4)
+imshow(log10(optdpt_eff),cmap='RdYlBu_r',extent=extent)
+colorbar()
+contour(F4,extent=extent,colors='black',alpha=0.5,levels=[-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1.0])
+#imshow(F4,cmap='Spectral',extent=extent)
+colorbar()
+#contour(F4,extent=extent,colors='black',alpha=0.5,levels=[0.1,0.2,0.3,0.4,0.5,0.6,0.65,0.675])
